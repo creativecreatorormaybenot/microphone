@@ -10,10 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_web_plugins:
-    sdk: flutter
 
   meta: ^1.2.0
+
+  microphone_platform_interface: ^0.0.1
+  # microphone_web: ^0.0.1
 
 dev_dependencies:
   flutter_test:
