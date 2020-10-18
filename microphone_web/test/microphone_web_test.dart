@@ -1,13 +1,17 @@
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:microphone_platform_interface/microphone_platform_interface.dart';
 import 'package:microphone_web/microphone_web.dart';
 
+@TestOn('browser')
 void main() {
-  test('adds one to input values', () {
-    final calculator = Calculator();
-    expect(calculator.addOne(2), 3);
-    expect(calculator.addOne(-7), -6);
-    expect(calculator.addOne(0), 1);
-    expect(() => calculator.addOne(null), throwsNoSuchMethodError);
+  group('$MicrophoneWeb', () {
+    setUpAll(() async {
+      // todo: the web tests do not work as the JS library import does not work.
+      MicrophonePlatformInterface.instance = MicrophoneWeb();
+    });
+
+    test('$MicrophoneWeb set as default instance', () {
+      expect(MicrophonePlatformInterface.instance, isA<MicrophoneWeb>());
+    });
   });
 }
