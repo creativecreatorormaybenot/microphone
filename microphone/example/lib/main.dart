@@ -28,13 +28,12 @@ class _MicrophoneExampleAppState extends State<MicrophoneExampleApp> {
     super.initState();
 
     _initRecorder();
-    _audioPlayer = AudioPlayer();
   }
 
   @override
   void dispose() {
     _recorder.dispose();
-    _audioPlayer.dispose();
+    _audioPlayer?.dispose();
 
     super.dispose();
   }
@@ -58,26 +57,35 @@ class _MicrophoneExampleAppState extends State<MicrophoneExampleApp> {
     if (value.started) {
       if (value.stopped) {
         result = Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             OutlineButton(
               onPressed: () {
-                _initRecorder();
+                setState(_initRecorder);
               },
               child: Text('Restart recorder'),
             ),
-            OutlineButton(
-              onPressed: () async {
-                await _audioPlayer.setUrl(value.recording.url);
-                await _audioPlayer.play();
-              },
-              child: Text('Play recording'),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 16,
+              ),
+              child: OutlineButton(
+                onPressed: () async {
+                  _audioPlayer?.dispose();
+
+                  _audioPlayer = AudioPlayer();
+                  await _audioPlayer.setUrl(value.recording.url);
+                  await _audioPlayer.play();
+                },
+                child: Text('Play recording'),
+              ),
             ),
           ],
         );
       } else {
         result = OutlineButton(
           onPressed: () {
-            _recorder.stop;
+            _recorder.stop();
           },
           child: Text('Stop recording'),
         );
