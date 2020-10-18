@@ -1,4 +1,5 @@
 import 'package:meta/meta.dart';
+import 'package:microphone_platform_interface/method_channel_microphone.dart';
 
 /// The interface that implementations of microphone must implement.
 ///
