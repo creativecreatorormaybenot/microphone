@@ -1,12 +1,13 @@
 name: microphone_platform_interface
-description: Platform interface package for the microphone plugin.
+description: >2-
+  Platform interface package for the microphone plugin.
 version: 0.0.1
-homepage: >-2
+homepage: >2-
   https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone_platform_interface
 
 environment:
-  sdk: ">=2.8.0 <3.0.0"
-  flutter: ">=1.17.0 <2.0.0"
+  sdk: '>=2.8.0 <3.0.0'
+  flutter: '>=1.17.0 <2.0.0'
 
 dependencies:
   flutter:
