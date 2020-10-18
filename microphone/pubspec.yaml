@@ -1,6 +1,6 @@
 name: microphone
 description: Plugin (web-only at this time) for recording audio (using the microphone).
-version: 0.0.2
+version: 0.0.2+1
 homepage: https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone
 
 environment:
