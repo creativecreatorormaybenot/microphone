@@ -1,7 +1,7 @@
 name: microphone_web
 description: >2-
   Web implementation of the platform interface for the microphone plugin.
-version: 0.0.1
+version: 0.0.1+1
 homepage: >2-
   https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone_web
 
