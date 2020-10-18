@@ -1,7 +1,8 @@
 name: microphone_platform_interface
 description: >2-
-  Platform interface package for the microphone plugin.
-version: 0.0.1
+  A common platform interface for the microphone plugin used by the different platform
+  implementations.
+version: 0.0.1+1
 homepage: >2-
   https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone_platform_interface
 
