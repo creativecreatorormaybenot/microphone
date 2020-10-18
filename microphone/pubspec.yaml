@@ -1,11 +1,13 @@
 name: microphone
-description: Plugin (web-only at this time) for recording audio (using the microphone).
-version: 0.0.2+1
+description: >2-
+  Plugin (web-only at this time) for recording audio through the microphone.
+  This is an audio recorder plugin.
+version: 0.0.2+2
 homepage: https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone
 
 environment:
-  sdk: ">=2.8.0 <3.0.0"
-  flutter: ">=1.20.0 <2.0.0"
+  sdk: '>=2.8.0 <3.0.0'
+  flutter: '>=1.20.0 <2.0.0'
 
 dependencies:
   flutter:

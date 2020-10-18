@@ -1,3 +1,7 @@
+## 0.0.2+2
+
+* Update description to better match functionality.
+
 ## 0.0.2+1
 
 * Added usage guide to the README.
