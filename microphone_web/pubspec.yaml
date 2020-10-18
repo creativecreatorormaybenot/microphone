@@ -3,7 +3,7 @@ description: >2-
   Web implementation of the platform interface for the microphone plugin.
 version: 0.0.1+2
 homepage: >2-
-  https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone_web
+  https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone_web
 
 environment:
   sdk: '>=2.8.0 <3.0.0'
