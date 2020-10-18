@@ -22,36 +22,45 @@ void main() {
 
     test('start', () {
       // Cannot stop before starting.
-      expect(() => recorder.stop(), throwsAssertionError);
+      expect(recorder.stop, throwsAssertionError);
+      expect(fakeMicrophone.calls.last, 'create');
 
-      expect(() => recorder.start(), returnsNormally);
+      expect(recorder.start, returnsNormally);
+      expect(fakeMicrophone.calls.last, 'start');
+    });
 
-      // Can only start once.
-      expect(() => recorder.start(), throwsAssertionError);
+    test('can only start once', () {
+      expect(recorder.start, throwsAssertionError);
     });
 
     test('stop', () {
-      expect(() => recorder.stop(), returnsNormally);
+      expect(recorder.stop, returnsNormally);
+      expect(fakeMicrophone.calls.last, 'stop');
+    });
 
-      // Cannot stop twice.
-      expect(() => recorder.stop(), throwsAssertionError);
+    test('cannot stop twice', () {
+      expect(recorder.stop, throwsAssertionError);
     });
 
     test('dispose', () {
       // Cannot init twice.
-      expect(() => recorder.init(), throwsAssertionError);
+      expect(recorder.init, throwsAssertionError);
+      expect(fakeMicrophone.calls.last, 'stop');
 
-      expect(() => recorder.dispose(), returnsNormally);
+      expect(recorder.dispose, returnsNormally);
+      expect(fakeMicrophone.calls.last, 'dispose');
 
       // Cannot dispose twice.
-      expect(() => recorder.dispose(), throwsAssertionError);
+      expect(recorder.dispose, throwsAssertionError);
 
       // Cannot init again.
-      expect(() => recorder.init(), throwsAssertionError);
+      expect(recorder.init, throwsAssertionError);
 
       // Cannot use any method after disposing.
-      expect(() => recorder.start(), throwsAssertionError);
-      expect(() => recorder.stop(), throwsAssertionError);
+      expect(recorder.start, throwsAssertionError);
+      expect(recorder.stop, throwsAssertionError);
+
+      expect(fakeMicrophone.calls.last, 'dispose');
     });
   });
 }
