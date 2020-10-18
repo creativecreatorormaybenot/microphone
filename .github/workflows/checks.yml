@@ -1,0 +1,98 @@
+name: Checks
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '**/lib/**'
+      - '**/android/**'
+      - '**/ios/**'
+      - '**/pubspec.yaml'
+      - '**/test/**'
+      - '**/test_driver/**'
+      - '**/assets/**'
+      - '**/integration_test/**'
+
+jobs:
+  analyze:
+    timeout-minutes: 7
+    runs-on: ${{ matrix.os }}
+    name: Analysis of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.os }})
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'dev'
+        package:
+          - 'microphone'
+          - 'microphone_platform_interface'
+          - 'microphone_web'
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - uses: subosito/flutter-action@v1.3.2
+        with:
+          channel: ${{ matrix.channel }}
+      - run: flutter pub get
+        working-directory: ${{ matrix.package }}
+      - name: Check format
+        working-directory: ${{ matrix.package }}
+        run: dart format . --set-exit-if-changed
+      - run: flutter analyze
+        working-directory: ${{ matrix.package }}
+
+  test:
+    timeout-minutes: 14
+    runs-on: macos-latest
+    name: Testing of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.device }})
+    strategy:
+      matrix:
+        device:
+          - 'iPhone 11 Pro Max (13.7)'
+        channel:
+          - 'stable'
+          - 'beta'
+          - 'dev'
+        package:
+          - 'microphone'
+          - 'microphone_platform_interface'
+          - 'microphone_web'
+      fail-fast: false
+
+    steps:
+      - name: Start iOS simulator
+        if: matrix.package == 'microphone'
+        run: |
+          xcrun instruments -s
+          UDID=$(
+            xcrun instruments -s |
+            awk \
+              -F ' *[][]' \
+              -v 'device=${{ matrix.device }}' \
+              '$1 == device { print $2 }'
+          )
+          xcrun simctl boot "${UDID:?simulator not found}"
+      - uses: actions/checkout@v2.3.3
+      - uses: subosito/flutter-action@v1.3.2
+        with:
+          channel: ${{ matrix.channel }}
+      - run: flutter pub get
+        working-directory: ${{ matrix.package }}
+      - name: Run unit tests (tester)
+        if: matrix.package != 'microphone_web'
+        run: flutter test
+        working-directory: ${{ matrix.package }}
+      - name: Run unit tests (chrome)
+        if: matrix.package == 'microphone_web'
+        run: flutter test --platform chrome
+        working-directory: ${{ matrix.package }}
+      - name: Integration tests on iOS
+        if: matrix.package == 'microphone'
+        run: |
+          cd microphone/example
+          flutter drive --driver=test_driver/integration_test.dart --target=integration_test/microphone_test.dart

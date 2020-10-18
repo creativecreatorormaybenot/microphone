@@ -1,0 +1,29 @@
+name: microphone
+description: Plugin (web-only at this time) for recording audio (using the microphone).
+version: 0.0.1
+homepage: https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone
+
+environment:
+  sdk: ">=2.8.0 <3.0.0"
+  flutter: ">=1.20.0 <2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+
+  meta: ^1.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  pedantic: ^1.9.2
+  pigeon: 0.1.7
+
+flutter:
+  plugin:
+    platforms:
+      web:
+        default_package: microphone_web
