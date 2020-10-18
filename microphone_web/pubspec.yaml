@@ -1,11 +1,13 @@
 name: microphone_web
-description: Web implementation of the platform interface for the microphone plugin.
+description: >2-
+  Web implementation of the platform interface for the microphone plugin.
 version: 0.0.1
-homepage: https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone_web
+homepage: >2-
+  https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone_web
 
 environment:
-  sdk: ">=2.8.0 <3.0.0"
-  flutter: ">=1.20.0 <2.0.0"
+  sdk: '>=2.8.0 <3.0.0'
+  flutter: '>=1.20.0 <2.0.0'
 
 dependencies:
   flutter:
@@ -32,4 +34,3 @@ flutter:
       web:
         pluginClass: MicrophoneWeb
         fileName: microphone_web.dart
-
