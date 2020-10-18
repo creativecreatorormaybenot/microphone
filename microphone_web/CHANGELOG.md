@@ -1,3 +1,7 @@
+## 0.0.1+3
+
+* Correct homepage in Pubspec.
+
 ## 0.0.1+2
 
 * Fix stopping media recorder.

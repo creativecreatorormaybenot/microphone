@@ -4,7 +4,7 @@ description: >2-
   implementations.
 version: 0.0.1+1
 homepage: >2-
-  https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone_platform_interface
+  https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone_platform_interface
 
 environment:
   sdk: '>=2.8.0 <3.0.0'

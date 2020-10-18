@@ -9,17 +9,17 @@ To learn more about the plugin and getting started, you can view [the main packa
 ### Plugin structure
 
 The `microphone` plugin uses the [federated plugins approach](https://flutter.dev/docs/development/packages-and-plugins/developing-packages#federated-plugins).  
-For this plugin, it means that the basic API is defined using [`pigeon`](https://pub.dev/packages/pigeon). The pigeon files can be found in the [`pigeons` directory](https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone/pigeons)
-in the main package. The API is defined in Dart in the [`microphone_platform_interface` package](https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone_platform_interface).  
-Furthermore, the Android and iOS implementations can be found in the main package, while the web implementation is in the [`microphone_web` package](https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone_platform_interface).
+For this plugin, it means that the basic API is defined using [`pigeon`](https://pub.dev/packages/pigeon). The pigeon files can be found in the [`pigeons` directory](https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone/pigeons)
+in the main package. The API is defined in Dart in the [`microphone_platform_interface` package](https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone_platform_interface).  
+Furthermore, the Android and iOS implementations can be found in the main package, while the web implementation is in the [`microphone_web` package](https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone_platform_interface).
 
 The packages in this repo are the following:
 
 | Package                                                                                                                              | Implementations                                     |
 | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
-| [`microphone`](https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone)                                       | Main plugin package + Android & iOS implementations |
-| [`microphone_platform_interface`](https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone_platform_interface) | Basic API definition & message handling             |
-| [`microphone_web`](https://github.com/creativecreatorormaybenot/microphone/tree/master/microphone_web)                               | Web implementation                                  |
+| [`microphone`](https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone)                                       | Main plugin package + Android & iOS implementations |
+| [`microphone_platform_interface`](https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone_platform_interface) | Basic API definition & message handling             |
+| [`microphone_web`](https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone_web)                               | Web implementation                                  |
 
 ## Contributing
 
