@@ -47,11 +47,9 @@ jobs:
   test:
     timeout-minutes: 14
     runs-on: macos-latest
-    name: Testing of ${{ matrix.package }} (${{ matrix.channel }}; ${{ matrix.device }})
+    name: Testing of ${{ matrix.package }} (${{ matrix.channel }})
     strategy:
       matrix:
-        device:
-          - 'iPhone 11 Pro Max (13.7)'
         channel:
           - 'stable'
           - 'beta'
