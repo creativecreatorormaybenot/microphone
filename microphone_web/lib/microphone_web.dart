@@ -67,8 +67,10 @@ class _Recorder {
     _mediaRecorder.addEventListener('dataavailable', _onDataAvailable);
   }
 
-  void _onDataAvailable(BlobEvent event) {
-    _audioBlobParts.add(event.data);
+  void _onDataAvailable(Event event) {
+    final blobEvent = event as BlobEvent;
+
+    _audioBlobParts.add(blobEvent.data);
   }
 
   Future<void> start() async {
