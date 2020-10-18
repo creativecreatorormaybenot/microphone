@@ -95,6 +95,7 @@ class _Recorder {
     }
 
     _mediaRecorder.addEventListener('stop', onStop);
+    _mediaRecorder.stop();
     final url = await completer.future;
     _mediaRecorder.removeEventListener('stop', onStop);
 
