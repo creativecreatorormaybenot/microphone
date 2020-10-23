@@ -2,7 +2,7 @@ name: microphone_platform_interface
 description: >2-
   A common platform interface for the microphone plugin used by the different platform
   implementations.
-version: 0.0.1+1
+version: 0.0.1+2
 homepage: >2-
   https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone_platform_interface
 
