@@ -1,4 +1,4 @@
-# Microphone [![Publish workflow](https://github.com/creativecreatorormaybenot/microphone/workflows/Publish/badge.svg)](https://github.com/creativecreatorormaybenot/microphone/actions) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/microphone.svg)](https://github.com/creativecreatorormaybenot/microphone) [![Pub version](https://img.shields.io/pub/v/microphone.svg)](https://pub.dev/packages/microphone)
+# Microphone [![Publish workflow](https://github.com/creativecreatorormaybenot/microphone/workflows/Publish/badge.svg)](https://github.com/creativecreatorormaybenot/microphone/actions) [![GitHub stars](https://img.shields.io/github/stars/creativecreatorormaybenot/microphone.svg)](https://github.com/creativecreatorormaybenot/microphone) [![Pub version](https://img.shields.io/pub/v/microphone.svg)](https://pub.dev/packages/microphone) [![Twitter Follow](https://img.shields.io/twitter/follow/creativemaybeno?label=Follow&style=social)](https://twitter.com/creativemaybeno)
 
 Flutter (web-only at this moment) plugin for recording audio (using the microphone).
 
