@@ -1,3 +1,7 @@
+## 0.0.3
+
+* Added support for retrieving recorded bytes.
+
 ## 0.0.2+3
 
 * Upgrade pigeon to `0.1.14`.
