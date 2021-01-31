@@ -17,5 +17,5 @@ abstract class MicrophoneApi {
 }
 
 void configurePigeon(PigeonOptions options) {
-  options..dartOut = '../microphone_platform_interface/lib/messages.dart';
+  options.dartOut = '../microphone_platform_interface/lib/messages.dart';
 }
