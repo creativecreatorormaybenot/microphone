@@ -1,14 +1,18 @@
+## 0.0.2
+
+* Added support for `toBytes`.
+
 ## 0.0.1+3
 
-* Correct homepage in Pubspec.
+* Corrected homepage in Pubspec.
 
 ## 0.0.1+2
 
-* Fix stopping media recorder.
+* Fixed stopping media recorder.
 
 ## 0.0.1+1
 
-* Fix internal callback type.
+* Fixed internal callback type.
 
 ## 0.0.1
 

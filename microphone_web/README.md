@@ -6,3 +6,5 @@ Web platform implementation of the `microphone_platform_interface` for the
 ## Getting started
 
 If you want to use the microphone plugin on web, see the [main `microphone` plugin package](https://pub.dev/packages/microphone).
+
+[microphone GitHub]: https://github.com/creativecreatorormaybenot/microphone

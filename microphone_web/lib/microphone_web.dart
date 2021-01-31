@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:html';
+import 'dart:typed_data';
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:microphone_platform_interface/microphone_platform_interface.dart';
+import 'package:http/http.dart' as http;
 
 /// The web implementation of the [MicrophonePlatformInterface].
 ///
@@ -44,6 +46,13 @@ class MicrophoneWeb extends MicrophonePlatformInterface {
   }
 
   @override
+  Future<Uint8List> toBytes(int recorderId) {
+    assert(_recorders.containsKey(recorderId));
+
+    return _recorders[recorderId].toBytes();
+  }
+
+  @override
   Future<void> dispose(int recorderId) async {
     assert(_recorders.containsKey(recorderId));
 
@@ -55,6 +64,7 @@ class MicrophoneWeb extends MicrophonePlatformInterface {
 class _Recorder {
   MediaRecorder _mediaRecorder;
   List<Blob> _audioBlobParts;
+  String _recordingUrl;
 
   Future<void> init() async {
     assert(_mediaRecorder == null);
@@ -82,6 +92,7 @@ class _Recorder {
   /// Stops the recorder and returns an URL pointing to the recording.
   Future<String> stop() async {
     assert(_mediaRecorder != null);
+    assert(_recordingUrl == null);
 
     final completer = Completer<String>();
 
@@ -96,10 +107,17 @@ class _Recorder {
 
     _mediaRecorder.addEventListener('stop', onStop);
     _mediaRecorder.stop();
-    final url = await completer.future;
+    _recordingUrl = await completer.future;
     _mediaRecorder.removeEventListener('stop', onStop);
 
-    return url;
+    return _recordingUrl;
+  }
+
+  Future<Uint8List> toBytes() async {
+    assert(_recordingUrl != null);
+
+    final result = await http.get(_recordingUrl);
+    return result.bodyBytes;
   }
 
   void dispose() {
