@@ -1,3 +1,7 @@
+## 0.0.2
+
+* Add `toBytes` to platform interface.
+
 ## 0.0.1+2
 
 * Used new version of pigeon to generate message code.
