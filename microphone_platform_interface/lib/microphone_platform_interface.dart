@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:meta/meta.dart';
 import 'package:microphone_platform_interface/method_channel_microphone.dart';
 
@@ -49,14 +51,24 @@ abstract class MicrophonePlatformInterface {
     throw UnimplementedError('create() has not been implemented.');
   }
 
-  /// Starts the recording of the microphone recorder with the given [recorderId].
+  /// Starts the recording of the microphone recorder with the given
+  /// [recorderId].
   Future<void> start(int recorderId) {
     throw UnimplementedError('start() has not been implemented.');
   }
 
-  /// Stops the recording of the recorder with [recorderId] and returns its recording URL.
+  /// Stops the recording of the recorder with [recorderId] and returns its
+  /// recording URL.
   Future<String> stop(int recorderId) {
     throw UnimplementedError('stop() has not been implemented.');
+  }
+
+  /// Returns the bytes of a **stopped** recording as a [Uint8List].
+  ///
+  /// Note that this can only be called once the recording has ben stopped via
+  /// [stop].
+  Future<Uint8List> toBytes(int recorderId) {
+    throw UnimplementedError('toBytes() has not been implemented.');
   }
 
   /// Disposes one microphone recorder that has the given [recorderId].
