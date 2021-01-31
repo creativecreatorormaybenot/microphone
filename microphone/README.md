@@ -46,6 +46,17 @@ final recordingUrl = microphoneRecorder.value.recording.url;
 The recording is accessible through a URL and can be played back using e.g. [`just_audio`](https://pub.dev/packages/just_audio)'s "read from URL"
 (requires adding a `just_audio_web` dependency as well; see the [example app]).
 
+Additionally, you can retrieve the recorded bytes from a recorder (after the recording has been
+stopped and while the recorder has not yet been disposed).
+
+```dart
+import 'package:microphone/microphone.dart';
+// ...
+
+// Retrieves the recorded bytes.
+final bytes = await microphoneRecorder.toBytes();
+```
+
 **Do not forget** to *dispose* the recorder:
 
 ```dart

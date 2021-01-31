@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 import 'package:microphone_platform_interface/microphone_platform_interface.dart';
@@ -139,6 +141,18 @@ class MicrophoneRecorder extends ValueNotifier<MicrophoneRecorderValue> {
       stopped: true,
       recording: MicrophoneRecording(url: recording),
     );
+  }
+
+  /// Returns the recorded bytes.
+  ///
+  /// [stop] has to have been called before this can be called.
+  Future<Uint8List> toBytes() {
+    _checkInitialized();
+    _checkNotDisposed();
+    assert(value.stopped,
+        'The recorder has to be stopped before toBytes can be used.');
+
+    return _microphonePlatform.toBytes(_recorderId);
   }
 
   /// Disposes the recorder.
