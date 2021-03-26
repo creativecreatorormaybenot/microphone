@@ -3,8 +3,8 @@ import 'dart:html';
 import 'dart:typed_data';
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:microphone_platform_interface/microphone_platform_interface.dart';
 import 'package:http/http.dart' as http;
+import 'package:microphone_platform_interface/microphone_platform_interface.dart';
 
 /// The web implementation of the [MicrophonePlatformInterface].
 ///
@@ -35,36 +35,36 @@ class MicrophoneWeb extends MicrophonePlatformInterface {
   Future<void> start(int recorderId) {
     assert(_recorders.containsKey(recorderId));
 
-    return _recorders[recorderId].start();
+    return _recorders[recorderId]!.start();
   }
 
   @override
   Future<String> stop(int recorderId) {
     assert(_recorders.containsKey(recorderId));
 
-    return _recorders[recorderId].stop();
+    return _recorders[recorderId]!.stop();
   }
 
   @override
   Future<Uint8List> toBytes(int recorderId) {
     assert(_recorders.containsKey(recorderId));
 
-    return _recorders[recorderId].toBytes();
+    return _recorders[recorderId]!.toBytes();
   }
 
   @override
   Future<void> dispose(int recorderId) async {
     assert(_recorders.containsKey(recorderId));
 
-    await _recorders[recorderId].dispose();
+    _recorders[recorderId]!.dispose();
     _recorders.remove(recorderId);
   }
 }
 
 class _Recorder {
-  MediaRecorder _mediaRecorder;
-  List<Blob> _audioBlobParts;
-  String _recordingUrl;
+  MediaRecorder? _mediaRecorder;
+  List<Blob>? _audioBlobParts;
+  String? _recordingUrl;
 
   Future<void> init() async {
     assert(_mediaRecorder == null);
@@ -74,19 +74,19 @@ class _Recorder {
     _mediaRecorder = MediaRecorder(stream);
 
     _audioBlobParts = [];
-    _mediaRecorder.addEventListener('dataavailable', _onDataAvailable);
+    _mediaRecorder!.addEventListener('dataavailable', _onDataAvailable);
   }
 
   void _onDataAvailable(Event event) {
     final blobEvent = event as BlobEvent;
 
-    _audioBlobParts.add(blobEvent.data);
+    _audioBlobParts!.add(blobEvent.data!);
   }
 
   Future<void> start() async {
     assert(_mediaRecorder != null);
 
-    _mediaRecorder.start();
+    _mediaRecorder!.start();
   }
 
   /// Stops the recorder and returns an URL pointing to the recording.
@@ -99,31 +99,31 @@ class _Recorder {
     void onStop(_) {
       assert(_audioBlobParts != null);
 
-      final blob = Blob(_audioBlobParts);
+      final blob = Blob(_audioBlobParts!);
       _audioBlobParts = null;
 
       completer.complete(Url.createObjectUrl(blob));
     }
 
-    _mediaRecorder.addEventListener('stop', onStop);
-    _mediaRecorder.stop();
+    _mediaRecorder!.addEventListener('stop', onStop);
+    _mediaRecorder!.stop();
     _recordingUrl = await completer.future;
-    _mediaRecorder.removeEventListener('stop', onStop);
+    _mediaRecorder!.removeEventListener('stop', onStop);
 
-    return _recordingUrl;
+    return _recordingUrl!;
   }
 
   Future<Uint8List> toBytes() async {
     assert(_recordingUrl != null);
 
-    final result = await http.get(_recordingUrl);
+    final result = await http.get(Uri.parse(_recordingUrl!));
     return result.bodyBytes;
   }
 
   void dispose() {
     assert(_mediaRecorder != null);
 
-    _mediaRecorder.removeEventListener('dataavailable', _onDataAvailable);
+    _mediaRecorder!.removeEventListener('dataavailable', _onDataAvailable);
     _mediaRecorder = null;
   }
 }

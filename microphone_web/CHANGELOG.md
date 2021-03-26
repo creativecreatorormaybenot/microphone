@@ -1,3 +1,7 @@
+## 0.1.0
+
+* Migrated to null safety and Flutter 2.
+
 ## 0.0.2
 
 * Added support for `toBytes`.

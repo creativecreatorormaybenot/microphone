@@ -1,4 +1,4 @@
-name: Checks
+name: checks
 
 on:
   pull_request:
@@ -73,7 +73,8 @@ jobs:
         working-directory: ${{ matrix.package }}
       - name: Run unit tests (tester)
         if: matrix.package != 'microphone_web'
-        run: flutter test
+        # Running without null safety as we are still using legacy mockito.
+        run: flutter test --no-sound-null-safety
         working-directory: ${{ matrix.package }}
       - name: Run unit tests (chrome)
         if: matrix.package == 'microphone_web'

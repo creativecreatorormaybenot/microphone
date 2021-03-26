@@ -9,7 +9,7 @@ class MethodChannelMicrophone extends MicrophonePlatformInterface {
   Future<int> create() async {
     final message = await _api.create();
 
-    return message.recorderId;
+    return message.recorderId!;
   }
 
   @override
@@ -21,7 +21,7 @@ class MethodChannelMicrophone extends MicrophonePlatformInterface {
   Future<String> stop(int recorderId) async {
     final message = await _api.stop(IdMessage()..recorderId = recorderId);
 
-    return message.url;
+    return message.url!;
   }
 
   @override
