@@ -1,12 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 import 'package:microphone_platform_interface/messages.dart';
 import 'package:microphone_platform_interface/method_channel_microphone.dart';
 import 'package:microphone_platform_interface/microphone_platform_interface.dart';
+import 'package:microphone_platform_interface/test_api.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:mockito/mockito.dart';
 
 class _ApiLogger implements TestMicrophoneApi {
   final List<String> log = [];
-  IdMessage idMessage;
+  late IdMessage idMessage;
 
   @override
   IdMessage create() {
@@ -63,7 +65,7 @@ void main() {
 
   group('$MethodChannelMicrophone', () {
     final microphone = MethodChannelMicrophone();
-    _ApiLogger logger;
+    late _ApiLogger logger;
 
     setUp(() {
       logger = _ApiLogger();

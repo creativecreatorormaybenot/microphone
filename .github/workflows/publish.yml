@@ -1,4 +1,4 @@
-name: Publish
+name: publish
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
   pana:
     timeout-minutes: 9
     runs-on: ubuntu-latest
-    name: Configuration of ${{ matrix.package }}
+    name: ${{ matrix.package }} configuration
     strategy:
       matrix:
         package:

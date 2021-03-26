@@ -59,7 +59,7 @@ class _MicrophoneExampleAppState extends State<MicrophoneExampleApp> {
         result = Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            OutlineButton(
+            OutlinedButton(
               onPressed: () {
                 setState(_initRecorder);
               },
@@ -69,7 +69,7 @@ class _MicrophoneExampleAppState extends State<MicrophoneExampleApp> {
               padding: const EdgeInsets.only(
                 top: 16,
               ),
-              child: OutlineButton(
+              child: OutlinedButton(
                 onPressed: () async {
                   _audioPlayer?.dispose();
 
@@ -83,7 +83,7 @@ class _MicrophoneExampleAppState extends State<MicrophoneExampleApp> {
           ],
         );
       } else {
-        result = OutlineButton(
+        result = OutlinedButton(
           onPressed: () {
             _recorder.stop();
           },
@@ -91,7 +91,7 @@ class _MicrophoneExampleAppState extends State<MicrophoneExampleApp> {
         );
       }
     } else {
-      result = OutlineButton(
+      result = OutlinedButton(
         onPressed: () {
           _recorder.start();
         },

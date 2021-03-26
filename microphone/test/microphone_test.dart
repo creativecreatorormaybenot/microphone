@@ -1,13 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:microphone/microphone.dart';
 import 'package:microphone_platform_interface/messages.dart';
+import 'package:microphone_platform_interface/test_api.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('$MicrophoneRecorder', () {
-    FakeMicrophoneApi fakeMicrophone;
-    MicrophoneRecorder recorder;
+    late final FakeMicrophoneApi fakeMicrophone;
+    late final MicrophoneRecorder recorder;
 
     setUpAll(() {
       fakeMicrophone = FakeMicrophoneApi();

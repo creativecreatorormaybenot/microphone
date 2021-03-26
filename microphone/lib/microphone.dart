@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
 import 'package:microphone_platform_interface/microphone_platform_interface.dart';
 
 final _microphonePlatform = MicrophonePlatformInterface.instance;
@@ -10,12 +9,10 @@ final _microphonePlatform = MicrophonePlatformInterface.instance;
 class MicrophoneRecorderValue {
   /// Constructs a recorder given the values.
   const MicrophoneRecorderValue({
-    @required this.started,
-    @required this.stopped,
-    @required this.recording,
-  })  : assert(started != null),
-        assert(stopped != null),
-        assert(!stopped || started),
+    required this.started,
+    required this.stopped,
+    required this.recording,
+  })   : assert(!stopped || started),
         assert(recording == null || stopped);
 
   /// Whether the recorder has been started yet.
@@ -37,14 +34,14 @@ class MicrophoneRecorderValue {
   /// The result of the recorder, i.e. the recording.
   ///
   /// This is `null` before [stopped] is `true`.
-  final MicrophoneRecording recording;
+  final MicrophoneRecording? recording;
 
   /// Returns a new instance that has the same values as this current instance,
   /// except for any overrides passed in as arguments to [copyWidth].
   MicrophoneRecorderValue copyWith({
-    bool started,
-    bool stopped,
-    MicrophoneRecording recording,
+    bool? started,
+    bool? stopped,
+    MicrophoneRecording? recording,
   }) {
     return MicrophoneRecorderValue(
       started: started ?? this.started,
@@ -66,7 +63,7 @@ class MicrophoneRecorderValue {
 class MicrophoneRecording {
   /// Constructs a [MicrophoneRecording] given recording results.
   const MicrophoneRecording({
-    this.url,
+    required this.url,
   });
 
   /// A URL pointing to the recording.
@@ -90,7 +87,7 @@ class MicrophoneRecorder extends ValueNotifier<MicrophoneRecorderValue> {
           recording: null,
         ));
 
-  int _recorderId;
+  late final int _recorderId;
 
   var _initialized = false, _disposed = false;
 

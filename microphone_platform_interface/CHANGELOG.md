@@ -1,3 +1,11 @@
+## 0.1.0+1
+
+* Moved test API to `lib`.
+
+## 0.1.0
+
+* Migrated to null safety and Flutter 2.
+
 ## 0.0.2
 
 * Add `toBytes` to platform interface.
