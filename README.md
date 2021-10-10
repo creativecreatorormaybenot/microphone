@@ -17,7 +17,7 @@ The packages in this repo are the following:
 
 | Package                                                                                                                              | Implementations                                     |
 | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
-| [`microphone`](https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone)                                       | Main plugin package + Android & iOS implementations |
+| [`microphone`](https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone)                                       | Main plugin package                                 |
 | [`microphone_platform_interface`](https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone_platform_interface) | Basic API definition & message handling             |
 | [`microphone_web`](https://github.com/creativecreatorormaybenot/microphone/tree/main/microphone_web)                               | Web implementation                                  |
 
