@@ -15,7 +15,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
 
-  http: ^0.13.1
+  http: ^1.1.0
 
   microphone_platform_interface: ^0.1.0
 
